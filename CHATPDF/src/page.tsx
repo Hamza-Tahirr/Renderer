@@ -1,14 +1,15 @@
-import React from 'react'
+import { useState } from 'react';
 import FileUpload from './FileUpload';
 
-type Props = {}
+const Page = () => {
+  const [file, setFile] = useState<File | null>(null);
 
-const page = (props: Props) => {
   return (
-    <div>
-        <FileUpload/>
+    <div className="max-w-xl mx-auto p-4">
+      <FileUpload onPDFUpload={setFile} />
+      {file && <p className="mt-2 text-sm">Selected file: {file.name}</p>}
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
